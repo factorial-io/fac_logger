@@ -9,6 +9,7 @@
         }
     ],
     "require": {
-        "graylog2/gelf-php": "^1.2"
+        "graylog2/gelf-php": "^1.2",
+        "drupal/monolog": "^1.3.0"
     }
 }
