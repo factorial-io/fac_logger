@@ -1,0 +1,14 @@
+{
+    "name": "factorial-io/fac_logger",
+    "description": "logging helper module",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Stephan Huber",
+            "email": "stephan@factorial.io"
+        }
+    ],
+    "require": {
+        "graylog2/gelf-php": "^1.2"
+    }
+}
