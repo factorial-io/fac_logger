@@ -7,7 +7,7 @@
             "url": "https://github.com/factorial-io/fac_logger"
         },
         
-3. install via `composer install factorial-io/fac_logger`
+3. install via `composer require factorial-io/fac_logger`
 4. Add the following lines to `sites/default/services.yml`
 
         monolog.channel_handlers:
