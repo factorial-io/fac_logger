@@ -3,7 +3,7 @@ services:
     # Choose transportation method.
     class: Gelf\Transport\UdpTransport
     # Pass connection arguments.
-    arguments: ['logs.factorial.io', 12201]
+    arguments: ['lovelace.factorial.io', 12201]
   monolog_gelf.publisher:
     class: Gelf\Publisher
     arguments: ['@monolog_gelf.transport']
