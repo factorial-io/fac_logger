@@ -2,6 +2,8 @@
 
 namespace Drupal\fac_logger\Logger\Processor;
 
+use Monolog\LogRecord;
+
 /**
  * Class installation_type processor.
  */
@@ -10,13 +12,16 @@ class InstallationType {
   /**
    * Implements invoke.
    *
-   * @param array $record
+   * @param array|LogRecord $record
    *   The record.
    *
-   * @return array
+   * @return array|LogRecord
    *   The result.
    */
-  public function __invoke(array $record) {
+  public function __invoke(array|LogRecord $record) {
+    if(!is_array($record)) {
+      $record->toArray();
+    }
 
     // Remove any args from a possible backtrace:
     if (isset($record['context']['backtrace']) && is_array($record['context']['backtrace'])) {
