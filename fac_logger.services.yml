@@ -13,6 +13,3 @@ services:
 
   monolog.processor.installation_type:
     class: Drupal\fac_logger\Logger\Processor\InstallationType
-
-
-parameters:
