@@ -1,14 +1,7 @@
 # installation
 
-1. add the repo to your `composer.json`
-
-        {
-            "type": "vcs",
-            "url": "https://github.com/factorial-io/fac_logger"
-        },
-        
-3. install via `composer require factorial-io/fac_logger`
-4. Add the following lines to `sites/default/services.yml`
+1. install via `composer require factorial-io/fac_logger`
+2. Add the following lines to `sites/default/services.yml`
 
         monolog.channel_handlers:
           default: ['gelf']
