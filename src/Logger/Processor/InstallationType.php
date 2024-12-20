@@ -19,8 +19,8 @@ class InstallationType {
    *   The result.
    */
   public function __invoke(array|LogRecord $record) {
-    if(!is_array($record)) {
-      $record->toArray();
+    if ($record instanceof \Monolog\LogRecord) {
+      $record = $record->toArray();
     }
 
     // Remove any args from a possible backtrace:
