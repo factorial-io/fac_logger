@@ -19,15 +19,16 @@ class InstallationType {
    *   The result.
    */
   public function __invoke(array|LogRecord $record) {
-    if(!is_array($record)) {
-      $record->toArray();
+    // LogRecord doesn't have unset method.
+    // we can't use is_array because LogRecord consider an array in php.
+    if (!$record instanceof LogRecord) {
+      $this->removeBacktraceDetails($record);
     }
-
-    // Remove any args from a possible backtrace:
-    if (isset($record['context']['backtrace']) && is_array($record['context']['backtrace'])) {
-      foreach (array_keys($record['context']['backtrace']) as $ndx) {
-        unset($record['context']['backtrace'][$ndx]['args']);
-        unset($record['context']['backtrace'][$ndx]['object']);
+    else {
+      $record_array = $record->toArray();
+      if (isset($record_array['context'])) {
+        $this->removeBacktraceDetails($record_array);
+        $record = $record->with(context: $record_array['context']);
       }
     }
 
@@ -42,6 +43,22 @@ class InstallationType {
     }
 
     return $record;
+  }
+
+  /**
+   * Removes arguments and objects from the backtrace if present.
+   *
+   * @param array $record
+   *   The record array.
+   */
+  private function removeBacktraceDetails(array &$record)
+  {
+    if (isset($record['context']['backtrace']) && is_array($record['context']['backtrace'])) {
+      foreach (array_keys($record['context']['backtrace']) as $ndx) {
+        unset($record['context']['backtrace'][$ndx]['args']);
+        unset($record['context']['backtrace'][$ndx]['object']);
+      }
+    }
   }
 
 }
