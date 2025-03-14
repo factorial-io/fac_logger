@@ -2,7 +2,6 @@ name: fac_logger
 type: module
 description: helper module to send logs to our centralized logging service
 package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9 || ^10
+core_version_requirement: ^10 || ^11
 dependencies:
-  - monolog
+  - monolog:monolog
